@@ -1,0 +1,106 @@
+.player {
+	height: 100%;
+	user-select:none;
+	-moz-user-select: none;  
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	.player_top {
+		position: absolute;
+		top: 0;
+		height: 56px;
+		background: yellow;
+		width: 100%;
+	}
+	.player_bottom {
+		position: absolute;
+		bottom: 0;
+		height: 80px;
+		width: 100%;
+		.player-info {
+			position: absolute;
+			left: 278px;
+			right: 270px;
+			background: red;
+			height: 100%;
+		}
+		.player-controls {
+			position: absolute;
+			left: 0;
+			width: 278px;
+			background: green;
+			height: 100%;
+			text-align: center;
+			&>a {
+				font-size: 28px;
+				cursor: pointer;
+				margin: 0 10px;
+				height: 28px;
+				position: relative;
+				top: 25px;
+				color: #FFFFFF;
+				text-decoration: none;
+			}
+		}
+		.player-volumn {
+			position: absolute;
+			right: 0;
+			width: 270px;
+			background: pink;
+			height: 100%;
+		}
+	}
+	.player_middle {
+		position: absolute;
+		top: 56px;
+		bottom: 80px;
+		width: 100%;
+		.main_left {
+			position: absolute;
+			left: 0;
+			height: 100%;
+			width: 220px;
+			background-color: blue;
+		}
+		.main_right {
+			position: absolute;
+			right: 0;
+			height: 100%;
+			width: 220px;
+			background-color: red;
+		}
+		.player_list {
+			position: absolute;
+			left: 220px;
+			right: 220px;
+			height: 100%;
+			.playlist {
+				display: table;
+				width: 100%;
+				padding: 0 10px;
+				.playlist_row {
+					display: table-row;
+					height: 30px;
+					line-height: 30px;
+					width: 100%;
+					& > div {
+						display: table-cell;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						border-bottom: 1px solid rgb(51, 51, 51);
+						&.c1 {
+							width: 5%;
+						}
+						&.c2,&.c3,&.c4 {
+							width: 25%;
+						}
+						&.c5 {
+							width: 10%;
+						}	
+					}
+				}
+			}
+			
+		}
+	}
+}
