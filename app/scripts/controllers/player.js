@@ -2,7 +2,7 @@ define(['angular','less!styles/player','directives/musicplayer'], function (angu
   'use strict';
 
   angular.module('musicyaoApp.controllers.PlayerCtrl', [])
-    .controller('PlayerCtrl', function ($scope) {
+    .controller('PlayerCtrl', function ($scope,$resouce) {
       
     });
 });
