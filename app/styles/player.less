@@ -16,18 +16,56 @@
 		bottom: 0;
 		height: 80px;
 		width: 100%;
+		background-color: green;
 		.player-info {
 			position: absolute;
 			left: 278px;
 			right: 270px;
-			background: red;
 			height: 100%;
+			color: #FFFFFF;
+			.track-info {
+				margin-top: 20px;
+				.track-control {
+					display: inline-block;
+					float: right;
+				}
+			}
+			.player-length {
+				position: relative;
+				height: 20px;
+				.player-position {
+					position: absolute;
+					left: 0;
+					width: 40px;
+				}
+				.player-progress {
+					position: absolute;
+					left: 40px;
+					right: 40px;
+					height: 2px;
+					top:50%;
+					margin-top: -1px;
+					.jp-seek-bar {
+						height: 100%;
+						background-color: #aaaaaa;
+						.jp-play-bar {
+							height: 100%;
+							background-color: #FFFFFF;
+						}
+					}
+				}
+				.player-duration {
+					position: absolute;
+					right: 0;
+					width: 40px;
+					text-align: right;
+				}
+			}
 		}
 		.player-controls {
 			position: absolute;
 			left: 0;
 			width: 278px;
-			background: green;
 			height: 100%;
 			text-align: center;
 			&>a {
@@ -45,7 +83,6 @@
 			position: absolute;
 			right: 0;
 			width: 270px;
-			background: pink;
 			height: 100%;
 		}
 	}
@@ -73,6 +110,8 @@
 			left: 220px;
 			right: 220px;
 			height: 100%;
+			overflow-y: auto;
+			overflow-x: hidden;
 			.playlist {
 				display: table;
 				width: 100%;
@@ -82,6 +121,7 @@
 					height: 30px;
 					line-height: 30px;
 					width: 100%;
+					cursor: default;
 					& > div {
 						display: table-cell;
 						overflow: hidden;
@@ -97,6 +137,11 @@
 						&.c5 {
 							width: 10%;
 						}	
+					}
+				}
+				.playlist_item {
+					&:active,&.active {
+						background-color: #aaa;
 					}
 				}
 			}

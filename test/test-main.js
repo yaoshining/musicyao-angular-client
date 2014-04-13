@@ -13,8 +13,22 @@ requirejs.config({
     baseUrl: '/base/app/scripts',
 
     paths: {
-        
-    },
+    angular: '../bower_components/angular/angular',
+    'angular-route': '../bower_components/angular-route/angular-route',
+    'angular-cookies': '../bower_components/angular-cookies/angular-cookies',
+    'angular-sanitize': '../bower_components/angular-sanitize/angular-sanitize',
+    'angular-resource': '../bower_components/angular-resource/angular-resource',
+    'angular-mocks': '../bower_components/angular-mocks/angular-mocks',
+    jquery: '../bower_components/jquery/dist/jquery',
+    styles: '../styles',
+    jplayer: '../bower_components/jplayer/jquery.jplayer/jquery.jplayer',
+    'jplayer-playlist': '../bower_components/jplayer/add-on/jplayer.playlist',
+    css: '../bower_components/require-css/css',
+    'css-builder': '../bower_components/require-css/css-builder',
+    normalize: '../bower_components/require-css/normalize',
+    bootstrap: '../bower_components/bootstrap/dist/js/bootstrap',
+    'angular-scenario': '../bower_components/angular-scenario/angular-scenario'
+  },
 
     shim: {
         'angular' : {'exports' : 'angular'},

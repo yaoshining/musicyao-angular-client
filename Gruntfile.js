@@ -8,7 +8,7 @@
 // 'test/spec/**/*.js'
 
 module.exports = function (grunt) {
-
+  var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
@@ -65,14 +65,70 @@ module.exports = function (grunt) {
         hostname: 'localhost',
         livereload: 35729
       },
+      server: {
+        options: {
+          port: 8000,
+          base: 'public',
+          logger: 'dev',
+          hostname: 'localhost',
+          middleware: function (connect, options) {
+             var proxy = require('grunt-connect-proxy/lib/utils').proxyRequest;
+             return [
+                // Include the proxy first
+                proxy,
+                // Serve static files.
+                connect.static(options.base),
+                // Make empty directories browsable.
+                connect.directory(options.base)
+             ];
+          }
+        },
+        proxies: [
+          {
+              context: '/MusicYao',
+              host: '114.215.109.39',
+              port: '7001',
+              https: false,
+              changeOrigin: true
+          }
+        ]
+      },
       livereload: {
         options: {
           open: true,
           base: [
             '.tmp',
             '<%= yeoman.app %>'
-          ]
-        }
+          ],
+          middleware: function (connect, options) {
+              if (!Array.isArray(options.base)) {
+                  options.base = [options.base];
+              }
+
+              // Setup the proxy
+              var middlewares = [require('grunt-connect-proxy/lib/utils').proxyRequest];
+
+              // Serve static files.
+              options.base.forEach(function(base) {
+                  middlewares.push(connect.static(base));
+              });
+
+              // Make directory browse-able.
+              var directory = options.directory || options.base[options.base.length - 1];
+              middlewares.push(connect.directory(directory));
+
+              return middlewares;
+          }
+        },
+        proxies: [
+          {
+              context: '/MusicYao',
+              host: '114.215.109.39',
+              port: '7001',
+              https: false,
+              changeOrigin: true
+          }
+        ]
       },
       test: {
         options: {
@@ -282,7 +338,7 @@ module.exports = function (grunt) {
       ],
       dist: [
         'copy:styles',
-        'imagemin',
+        // 'imagemin',
         'svgmin'
       ]
     },
@@ -365,6 +421,7 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-connect-proxy');
 
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
@@ -373,6 +430,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'configureProxies:livereload',
       'bower-install',
       'concurrent:server',
       'autoprefixer',
