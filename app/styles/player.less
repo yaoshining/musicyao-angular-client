@@ -26,8 +26,16 @@
 			.track-info {
 				margin-top: 20px;
 				.track-control {
+					font-size: 18px;
 					display: inline-block;
 					float: right;
+					i {
+						margin: 0 5px;
+						cursor: pointer;
+						&:hover {
+							color: #aaaaaa;
+						}
+					}
 				}
 			}
 			.player-length {
@@ -45,12 +53,27 @@
 					height: 2px;
 					top:50%;
 					margin-top: -1px;
+					cursor: pointer;
 					.jp-seek-bar {
 						height: 100%;
-						background-color: #aaaaaa;
+						background-color: #bbbbbb;
 						.jp-play-bar {
 							height: 100%;
 							background-color: #FFFFFF;
+							position: relative;
+							overflow: visible !important;
+							&:after {
+								content: "";
+								position: absolute;
+								right: -4px;
+								top: -3px;
+								height: 8px;
+								width: 8px;
+								line-height: normal;
+								background-color: #FFFFFF;
+								border-radius: 50%;
+								z-index: 5;
+							}
 						}
 					}
 				}
@@ -84,6 +107,44 @@
 			right: 0;
 			width: 270px;
 			height: 100%;
+			color: #FFFFFF;
+			text-align: center;
+			line-height: 80px;
+			#volume {
+				display: inline-block;
+				width: 200px;
+				height: 20px;
+				text-align: center;
+				height: 100%;
+				&>i {
+					vertical-align: middle;
+					font-size: 18px;
+				}
+				.jp-volume-bar {
+					display: inline-block;
+					width: 100px;
+					background-color: #bbbbbb;
+					height: 2px;
+					vertical-align: middle;
+					cursor: pointer;
+					.jp-volume-bar-value {
+						position: relative;
+						height: 100%;
+						background-color: #FFFFFF;
+						&:before {
+							content: "";
+							position: absolute;
+							right: -4px;
+							top: -3px;
+							height: 8px;
+							width: 8px;
+							line-height: normal;
+							background-color: #FFFFFF;
+							border-radius: 50%;
+						}
+					}
+				}
+			}
 		}
 	}
 	.player_middle {
