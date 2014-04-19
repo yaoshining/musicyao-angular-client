@@ -9,7 +9,8 @@ define(['angular', 'controllers/main', 'controllers/player', 'directives/musicpl
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'ngTouch'
 ])
     .config(function ($routeProvider) {
       $routeProvider

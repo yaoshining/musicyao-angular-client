@@ -7,6 +7,7 @@ require.config({
     'angular-sanitize': '../bower_components/angular-sanitize/angular-sanitize',
     'angular-resource': '../bower_components/angular-resource/angular-resource',
     'angular-mocks': '../bower_components/angular-mocks/angular-mocks',
+    'angular-touch': '../bower_components/angular-touch/angular-touch',
     jquery: '../bower_components/jquery/dist/jquery',
     styles: '../styles',
     jplayer: '../bower_components/jplayer/jquery.jplayer/jquery.jplayer',
@@ -31,6 +32,9 @@ require.config({
       'angular'
     ],
     'angular-resource': [
+      'angular'
+    ],
+    'angular-touch': [
       'angular'
     ],
     'angular-mocks': {
@@ -69,6 +73,7 @@ require([
   'angular-cookies',
   'angular-sanitize',
   'angular-resource',
+  'angular-touch',
   'less!styles/main'
 ], function(angular, app, ngRoutes, ngCookies, ngSanitize, ngResource) {
   'use strict';
